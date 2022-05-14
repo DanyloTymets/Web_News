@@ -243,50 +243,49 @@ include_once("functions/functions.php");
                             </div>
                             </br>
                             </br>
-                            <?php
-                                $event_id= $_GET['event_id'];
-                                $get_commets = "select * from events_comments where EventId='$event_id'";
-                                $run_commets = mysqli_query($con, $get_commets);
-                                $commets = mysqli_fetch_array($run_commets);
-                                if(is_array($commets) && count($commets) != 0 ) {
-                                    $commets_count = count($commets);
-                                    echo "
-                                        <hr class='invis1'>
-                                        <div class='custombox clearfix'>
-                                            <h4 class='small-title'>$commets_count Коментарі</h4>
-                                            </br>
-                                            <div class='row'>
-                                                <div class='col-lg-12'>
-                                                    <div class='comments-list'>
-                                    ";
-                                    while($commet = mysqli_fetch_array($run_commets)) {
-                                        $message = $commet['Message'];
-                                        
-                                        $converted_date = strtotime($commet['Date']);
-                                        $date = date('d/m/Y', $converted_date);
-                                        $user_id = $commet['CustomerID'];
-                                        $get_user = "select * from customers where customer_id='$user_id'";
-                                        $run_user = mysqli_query($con, $get_user);
-                                        $user = mysqli_fetch_array($run_user);
-                                        $user_name = $user['customer_name'];
+                            <div class="custombox clearfix">
+                                <?php
+                                    $event_id= $_GET['event_id'];
+                                    $get_commets = "select * from events_comments where EventId='$event_id'";
+                                    $run_commets = mysqli_query($con, $get_commets);
+                                    $commets = mysqli_fetch_array($run_commets);
+                                    if(is_array($commets) && count($commets) != 0) {
                                         echo "
-                                            <div class='media'>
-                                                <div class='media-body testtesttest'>
-                                                    <h4 class='media-heading user_name'>$user_name  <small class='small-text'>$date</small></h4>
-                                                    <p>$message</p>
-                                                </div>
-                                            </div>
+                                            <h4 class='small-title'>Коментарі:</h4>
+                                            </br>
                                         ";
                                     }
-                                    echo "
-                                                </div>
-                                            </div>
+                                ?>
+                                <div class='row'>
+                                    <div class='col-lg-12'>
+                                        <div class='comments-list'>
+                                            <?php
+                                                $event_id= $_GET['event_id'];
+                                                $get_commets = "select * from events_comments where EventId='$event_id'";
+                                                $run_commets = mysqli_query($con, $get_commets);
+                                                while($commets = mysqli_fetch_array($run_commets)){
+                                                    $comment_id = $commets['EventId'];
+                                                    $comment_writer = $commets['CustomerID'];
+                                                    $comment_message = $commets['Message'];
+                                                    $comment_date = $commets['Date'];
+                                                    $get_writer = "select * from customers where customer_id='$comment_writer'";
+                                                    $run_writer = mysqli_query($con, $get_writer);
+                                                    $writers = mysqli_fetch_array($run_writer);
+                                                    $user_id = $writers['customer_name'];
+                                                    echo "
+                                                        <div class='media'>
+                                                            <div class='media-body'>
+                                                                <h4 class='media-heading user_name'>$user_id <small>$comment_date</small></h4>
+                                                                <p>$comment_message</p>
+                                                            </div>
+                                                        </div>
+                                                    ";
+                                                }
+                                            ?>
                                         </div>
                                     </div>
-                                    ";
-                                }
-                            ?>
-
+                                </div>
+                            </div>
                             <?php
                                 if(isset($_SESSION['customer_email'])){ 
                                     $customer_email = $_SESSION['customer_email'];
