@@ -33,9 +33,11 @@ include_once("functions/functions.php");
                
                <ul class="menu">
                    
-                   <li>
-                       <a href="cart.php">Події</a>
-                   </li>
+                    <?php 
+                        if(isset($_SESSION['customer_email'])){
+                            echo"<li><a href='cart.php'>Події</a></li>";
+                        }
+                    ?>
                     <li>
                         <?php
                          if(!isset($_SESSION['customer_email'])){

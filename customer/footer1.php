@@ -4,9 +4,17 @@
             <div class="col-sm-6 col-md-3">
                <h4>Сторінки</h4>
                 <ul>
-                    <li><a href="../shop.php">Новини</a></li>
-                    <li><a href="../cart.php">Події</a></li>
-                    <li><a href="../contact.php">Контакти</a></li>
+                    <li>
+                        <a href="../shop.php">Новини</a>
+                    </li>
+                    <?php 
+                        if(isset($_SESSION['customer_email'])){
+                            echo"<li><a href='cart.php'>Події</a></li>";
+                        }
+                    ?>   
+                    <li>
+                        <a href="../contact.php">Контакти</a>
+                    </li>
                     <li>
                         <?php
                            if(!isset($_SESSION['customer_email'])){

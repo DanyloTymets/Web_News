@@ -36,9 +36,11 @@ include("functions/functions.php");
            <div class="col-md-6">
                
                <ul class="menu">
-                    <li>
-                       <a href="../cart.php">Події</a>
-                   </li>
+                    <?php 
+                        if(isset($_SESSION['customer_email'])){
+                            echo"<li><a href='cart.php'>Події</a></li>";
+                        }
+                    ?>
                     <li>
                        <a href="account.php">Аккаунт</a>
                    </li> 

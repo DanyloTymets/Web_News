@@ -1,5 +1,5 @@
 <?php
-$db = mysqli_connect("localhost","root","","LNU-Shop");
+$db = mysqli_connect("localhost","root","","lnu-news");
 function getProduct(){ 
     global $db; 
     $get_products = "select * from products order by 1 DESC LIMIT 0,6"; 
