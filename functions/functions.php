@@ -276,7 +276,7 @@ function getPagination(){
     if(!empty($aPath)){
         echo "&".$aPath;
     }
-    echo "'>".'First Page'."</a></li>";
+    echo "'>".'Перша сторінка'."</a></li>";
     for($i=1; $i<=$total_pages; $i++){
         echo "<li> <a href='shop.php?page=".$i.(!empty($aPath)?'&'.$aPath:'')."'>".$i."</a></li>";
     };
@@ -284,7 +284,7 @@ function getPagination(){
     if(!empty($aPath)){
         echo "&".$aPath;
     }
-    echo "'>".'Last Page'."</a></li>";
+    echo "'>".'Остання сторінка'."</a></li>";
 }
 
 function getProducts(){
