@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Час створення: Трв 22 2021 р., 17:28
+-- Час створення: Трв 14 2022 р., 22:30
 -- Версія сервера: 10.4.10-MariaDB
 -- Версія PHP: 7.3.12
 
@@ -148,13 +148,34 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `e_cat_id`, `cat_id`, `date`, `event_title`, `event_img1`, `event_keywords`, `event_desc`) VALUES
-(1, 1, 1, '2021-05-22 15:12:42', 'New test system', 'lnu.jpg', 'News', '<p>Введено нову систему тестування</p>                          '),
-(2, 2, 2, '2021-05-22 15:17:02', 'Випускний для бакалаврів 2021', 'graduation.jpg', 'Event', '<p>Випускний для бакалаврів 2021 для грув ПМІ-41,42,43</p>                          '),
-(3, 2, 2, '2021-05-22 15:27:58', 'Науковий семінар', 'ns.jpg', 'Event', '<p>Спільний науковий семінар філологічного факультету Львівського національного університету імені Івана Франка та відділу соціолінгвістики Інституту української мови НАН України</p>'),
-(4, 1, 1, '2021-05-22 15:12:53', 'Науковий семінар', 'lnu.jpg', 'News', '<p>Науковий семінар</p>'),
-(5, 2, 2, '2021-05-22 15:26:35', 'Барди у парку', 'bards.jpg', 'Event', '<p>Красива природа, приємна компанія та музика! Запрошуємо всіх на барди у парку навпроти ЛНУ! Якщо ви маєте музичний інструмент (гітару/укулеле/саксофон і т.д.), добре граєте, то реєструйтесь (самі чи з друзями), щоб стати виконавцем (виконавцями) на бардах.</p>'),
-(6, 1, 1, '2021-05-22 15:13:09', 'Зміни в роботі', 'lnu.jpg', 'News', '<p>Зміни в роботі</p>'),
-(7, 2, 2, '2021-05-22 15:08:40', 'Mafia', 'mafia.jpg', 'Event', '<p>Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world</p>');
+(1, 1, 1, '2021-05-30 10:00:00', 'New test system', 'lnu.jpg', 'News', '<p>Введено нову систему тестування</p>                          '),
+(2, 2, 2, '2021-05-29 10:00:00', 'Випускний для бакалаврів 2021', 'graduation.jpg', 'Event', '<p>Випускний для бакалаврів 2021 для грув ПМІ-41,42,43</p>                          '),
+(3, 2, 2, '2021-05-30 10:00:00', 'Науковий семінар', 'ns.jpg', 'Event', '<p>Спільний науковий семінар філологічного факультету Львівського національного університету імені Івана Франка та відділу соціолінгвістики Інституту української мови НАН України</p>'),
+(4, 1, 1, '2021-05-28 10:00:00', 'Науковий семінар', 'lnu.jpg', 'News', '<p>Науковий семінар</p>'),
+(5, 2, 2, '2021-06-01 11:00:00', 'Барди у парку', 'bards.jpg', 'Event', '<p>Красива природа, приємна компанія та музика! Запрошуємо всіх на барди у парку навпроти ЛНУ! Якщо ви маєте музичний інструмент (гітару/укулеле/саксофон і т.д.), добре граєте, то реєструйтесь (самі чи з друзями), щоб стати виконавцем (виконавцями) на бардах.</p>'),
+(6, 1, 1, '2021-07-15 10:00:00', 'Зміни в роботі', 'lnu.jpg', 'News', '<p>Зміни в роботі</p>'),
+(7, 2, 2, '2021-06-05 12:00:00', 'Mafia', 'mafia.jpg', 'Event', '<p>Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world Mafia one of the most popular game in the world</p>');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблиці `events_comments`
+--
+
+CREATE TABLE `events_comments` (
+  `Id` int(11) NOT NULL,
+  `CustomerID` int(11) NOT NULL,
+  `EventId` int(11) NOT NULL,
+  `Message` varchar(1000) CHARACTER SET utf8mb4 NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп даних таблиці `events_comments`
+--
+
+INSERT INTO `events_comments` (`Id`, `CustomerID`, `EventId`, `Message`, `Date`) VALUES
+(1, 1, 7, 'asgjvcjabwfkbwf', '2022-05-14');
 
 -- --------------------------------------------------------
 
@@ -196,7 +217,8 @@ INSERT INTO `pending_events` (`event_id`, `customer_id`) VALUES
 (2, 1),
 (3, 1),
 (5, 1),
-(7, 1);
+(7, 1),
+(7, 4);
 
 -- --------------------------------------------------------
 
@@ -254,6 +276,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`event_id`);
 
 --
+-- Індекси таблиці `events_comments`
+--
+ALTER TABLE `events_comments`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Індекси таблиці `event_categories`
 --
 ALTER TABLE `event_categories`
@@ -298,6 +326,12 @@ ALTER TABLE `customer_categories`
 --
 ALTER TABLE `events`
   MODIFY `event_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT для таблиці `events_comments`
+--
+ALTER TABLE `events_comments`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблиці `event_categories`
