@@ -57,7 +57,7 @@ if(isset($_REQUEST['p_cat'])&&is_array($_REQUEST['p_cat'])){
                                 if(isset($aCat[$cat_id])){
                                     echo "checked='checked'";
                                 }
-                                echo " value='$cat_id' type='checkbox' class='get_cat' name='cat'>
+                                echo " value='$cat_id' type='checkbox' class='get_cat' name='cat' checked>
                                 <span>
                                 $cat_title
                                 </span>
