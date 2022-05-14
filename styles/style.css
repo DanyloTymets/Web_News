@@ -589,3 +589,24 @@ body{
     font-size: 12px;
     padding: 0.1rem 1rem;
 }
+
+.media {
+    border-radius: 25px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.media .media-body {
+    padding-left: 10px;
+}
+.media .media-body .small-text {
+    font-size: 65%;
+}
+
+.comments-list .media:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+.comments-list .media:nth-child(even) {
+    background-color: #f9f9f9;
+}

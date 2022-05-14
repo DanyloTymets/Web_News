@@ -222,96 +222,101 @@ include_once("functions/functions.php");
                                 <?php
                                     $get_event = "select * from events order by rand() DESC LIMIT 0,3";
                                     $run_event = mysqli_query($con,$get_event);
-                                while($row_event=mysqli_fetch_array($run_event)){
-                                    $event_id = $row_event['event_id'];
-                                    $event_title = $row_event['event_title'];
-                                    $event_img1 = $row_event['event_img1'];
+                                    while($row_event=mysqli_fetch_array($run_event)){
+                                        $event_id = $row_event['event_id'];
+                                        $event_title = $row_event['event_title'];
+                                        $event_img1 = $row_event['event_img1'];
+                                        echo "
+                                            <div class='col-md-4 col-sm-4 center-responsive'>
+                                                <div class='product same-height'>
+                                                    <a href='details.php?event_id=$event_id'>
+                                                        <img class='img-responsive' src='admin_area/product_images/$event_img1'>
+                                                    </a>
+                                                    <div class='text' align='center'>
+                                                        <h4> <a href='details.php?event_id=$event_id'> $event_title </a> </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ";
+                                    }
+                                ?>
+                            </div>
+                            </br>
+                            </br>
+                            <?php
+                                $event_id= $_GET['event_id'];
+                                $get_commets = "select * from events_comments where EventId='$event_id'";
+                                $run_commets = mysqli_query($con, $get_commets);
+                                $commets = mysqli_fetch_array($run_commets);
+                                if(is_array($commets) && count($commets) != 0 ) {
+                                    $commets_count = count($commets);
                                     echo "
-                                        <div class='col-md-4 col-sm-4 center-responsive'>
-                                            <div class='product same-height'>
-                                                <a href='details.php?event_id=$event_id'>
-                                                    <img class='img-responsive' src='admin_area/product_images/$event_img1'>
-                                                </a>
-                                                <div class='text' align='center'>
-                                                    <h4> <a href='details.php?event_id=$event_id'> $event_title </a> </h3>
+                                        <hr class='invis1'>
+                                        <div class='custombox clearfix'>
+                                            <h4 class='small-title'>$commets_count Коментарі</h4>
+                                            </br>
+                                            <div class='row'>
+                                                <div class='col-lg-12'>
+                                                    <div class='comments-list'>
+                                    ";
+                                    while($commet = mysqli_fetch_array($run_commets)) {
+                                        $message = $commet['Message'];
+                                        
+                                        $converted_date = strtotime($commet['Date']);
+                                        $date = date('d/m/Y', $converted_date);
+                                        $user_id = $commet['CustomerID'];
+                                        $get_user = "select * from customers where customer_id='$user_id'";
+                                        $run_user = mysqli_query($con, $get_user);
+                                        $user = mysqli_fetch_array($run_user);
+                                        $user_name = $user['customer_name'];
+                                        echo "
+                                            <div class='media'>
+                                                <div class='media-body testtesttest'>
+                                                    <h4 class='media-heading user_name'>$user_name  <small class='small-text'>$date</small></h4>
+                                                    <p>$message</p>
+                                                </div>
+                                            </div>
+                                        ";
+                                    }
+                                    echo "
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ";
+                                }
+                            ?>
+
+                            <?php
+                                if(isset($_SESSION['customer_email'])){ 
+                                    $customer_email = $_SESSION['customer_email'];
+                                    $get_user = "select * from customers where customer_email='$customer_email'";
+                                    $run_user = mysqli_query($con, $get_user);
+                                    $user = mysqli_fetch_array($run_user);
+                                    $user_name = $user['customer_name'];
+                                    echo "
+                                        <hr class='invis1'>
+                                        <div class='custombox clearfix'>
+                                            <h4 class='small-title'>Залиште свій відгук:</h4>
+                                            <div class='row'>
+                                                <div class='col-lg-12'>
+                                                    <form method='post' class='form-wrapper'>
+                                                        <div class='form-group'>
+                                                            <label for='userName'>Ім'я:</label>
+                                                            <input id='userName' type='text' class='form-control' placeholder='$user_name' readonly />
+                                                        </div>
+                                                        <div class='form-group'>
+                                                            <label for='message'>Коментар:</label>
+                                                            <textarea id='message' name='message' class='form-control'></textarea>
+                                                        </div>
+                                                        <button name='submit' class='btn btn-primary'>Надіслати</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     ";
                                 }
-                                ?>
-                            </div>
-                            </br>
-                            </br>
-
-                            <hr class="invis1">
-
-                            <div class="custombox clearfix">
-                                <h4 class="small-title">3 Коментарі</h4>
-                                </br>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="comments-list">
-                                            <div class="media">
-                                                <a class="media-left" href="#">
-                                                    <img src="upload/author.jpg" alt="" class="rounded-circle">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading user_name">Amanda Martines <small>5 days ago</small></h4>
-                                                    <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa eiusmod Pinterest in do umami readymade swag. Selfies iPhone Kickstarter, drinking vinegar jean.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Відпоісти</a>
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                <a class="media-left" href="#">
-                                                    <img src="upload/author_01.jpg" alt="" class="rounded-circle">
-                                                </a>
-                                                <div class="media-body">
-
-                                                    <h4 class="media-heading user_name">Baltej Singh <small>5 days ago</small></h4>
-
-                                                    <p>Drinking vinegar stumptown yr pop-up artisan sunt. Deep v cliche lomo biodiesel Neutra selfies. Shorts fixie consequat flexitarian four loko tempor duis single-origin coffee. Banksy, elit small.</p>
-
-                                                    <a href="#" class="btn btn-primary btn-sm">Відпоісти</a>
-                                                </div>
-                                            </div>
-                                            <div class="media last-child">
-                                                <a class="media-left" href="#">
-                                                    <img src="upload/author_02.jpg" alt="" class="rounded-circle">
-                                                </a>
-                                                <div class="media-body">
-
-                                                    <h4 class="media-heading user_name">Marie Johnson <small>5 days ago</small></h4>
-                                                    <p>Kickstarter seitan retro. Drinking vinegar stumptown yr pop-up artisan sunt. Deep v cliche lomo biodiesel Neutra selfies. Shorts fixie consequat flexitarian four loko tempor duis single-origin coffee. Banksy, elit small.</p>
-
-                                                    <a href="#" class="btn btn-primary btn-sm">Відпоісти</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- end col -->
-                                </div><!-- end row -->
-                            </div><!-- end custom-box -->
-
-                            <hr class="invis1">
-
-                            <div class="custombox clearfix">
-                                <h4 class="small-title">Залиште свій відгук:</h4>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <form class="form-wrapper">
-                                            <input type="text" class="form-control" placeholder="Ім'я">
-                                            </br>
-                                            <input type="text" class="form-control" placeholder="Email">
-                                            </br>
-                                            <input type="text" class="form-control" placeholder="Website">
-                                            </br>
-                                            <textarea class="form-control" placeholder="Коментар:"></textarea>
-                                            </br>
-                                            <button type="submit" class="btn btn-primary">Надіслати</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            ?>
                         </div><!-- end page-wrapper -->
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -320,14 +325,23 @@ include_once("functions/functions.php");
     </div>
    
    <?php 
-    
     include("footer.php");
-    
     ?>
-    
     <script src="js/jquery-331.min.js"></script>
     <script src="js/bootstrap-337.min.js"></script>
-    
-    
 </body>
 </html>
+<?php 
+    if(isset($_POST['submit'])) {
+        $event_id= $_GET['event_id'];
+        $message = $_POST['message'];
+        $customer_email = $_SESSION['customer_email'];
+        $get_user = "select * from customers where customer_email='$customer_email'";
+        $run_user = mysqli_query($con, $get_user);
+        $user = mysqli_fetch_array($run_user);
+        $user_id = $user['customer_id'];
+        $insert_comment = "insert into events_comments (CustomerID, EventId, Message, Date) values ('$user_id', '$event_id', '$message', NOW())"; 
+        $run_comment = mysqli_query($con, $insert_comment); 
+        echo "<script>window.open('details.php?event_id=$event_id','_self')</script>";
+    }
+?>
