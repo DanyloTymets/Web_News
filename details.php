@@ -171,7 +171,7 @@ include_once("functions/functions.php");
                                     <li class="breadcrumb-item"><a href="shop.php">Новини</a></li>
                                     <li class="breadcrumb-item active"></li>
                                 </ol>-->
-                                <h1 class="text-center"><?php echo $event_title; ?></h1>
+                                <h1 class="text-center event-title"><?php echo $event_title; ?></h1>
                                 <h4><?php echo $event_category; ?></h4>
                                 <!--<?php sendToCart(); ?>
                                 <form action="details.php?add_cart=<?php echo $event_id; ?>" class="form-horizontal" method="post">

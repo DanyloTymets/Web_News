@@ -617,3 +617,7 @@ body{
     font-family: 'Times New Roman', Times, serif;
     text-align: justify;
 }
+.event-title{
+    color: #337ab7;
+    text-align: justify;
+}
