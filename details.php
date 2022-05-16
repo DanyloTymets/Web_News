@@ -165,29 +165,16 @@ include_once("functions/functions.php");
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
-                            <div class="blog-title-area text-center">
-                                <!--<ol class="breadcrumb hidden-xs-down">
-                                    <li class="breadcrumb-item"><a href="index.php">Головна</a></li>
-                                    <li class="breadcrumb-item"><a href="shop.php">Новини</a></li>
-                                    <li class="breadcrumb-item active"></li>
-                                </ol>-->
-                                <h1 class="text-center"><?php echo $event_title; ?></h1>
-                                <h4><?php echo $event_category; ?></h4>
-                                <!--<?php sendToCart(); ?>
-                                <form action="details.php?add_cart=<?php echo $event_id; ?>" class="form-horizontal" method="post">
-                                    <p class="text-center buttons"><button class="btn btn-primary"> Записатися</button></p>
-                                </form>-->
-                                <div class="blog-meta big-meta">
-                                    <small><a href="#" title=""><?php echo $event_date; ?></a></small>
+                            <div class="blog-title-area">
+                                <h1 class="event-title"><?php echo $event_title; ?></h1>
+                                <div class="blog-meta big-meta event-date">
+                                    <small><h5><?php echo $event_date; ?></h5></small>
                                 </div>
                                 </br>
-                                
                             </div>
 
                             <div class="single-post-media">
-                            <img class="img-responsive" src="admin_area/product_images/<?php echo $event_img1; ?>" alt="Event">
-                                <!--<img src="images/test.jpg" alt="" class='img-responsive center-block'>-->
-                            </div>
+                            <img class="img-responsive" src="admin_area/product_images/<?php echo $event_img1; ?>" alt="Event" />
                             </br>
                             </br>
                             <div class="blog-content">  

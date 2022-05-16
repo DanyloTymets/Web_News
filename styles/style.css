@@ -611,3 +611,17 @@ body{
 .comments-list .media:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+.blog-title-area .event-title {
+    text-align: justify;
+}
+
+.blog-title-area .event-date {
+    float: right;
+}
+
+@media(max-width: 768px){
+    .blog-title-area .event-title {
+        text-align: center;
+    }
+} 
