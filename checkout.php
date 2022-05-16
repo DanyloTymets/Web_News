@@ -146,7 +146,7 @@ include_once("functions/functions.php");
                     if(!isset($_SESSION['customer_email'])){ 
                         include("customer/customer_login.php"); 
                     }else{ 
-                        include("customer/account.php?orders"); 
+                        include(dirname(__FILE__) .'\customer\edit_acc.php');
                     }
                 ?>       
             </div>

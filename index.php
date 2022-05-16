@@ -175,11 +175,11 @@ include_once("functions/functions.php");
                </div>
                <a href="#myCarousel" class="left carousel-control" data-slide="prev">
                    <span class="glyphicon glyphicon-chevron-left"></span>
-                   <span class="sr-only">Previous</span> 
+                   <span class="sr-only">Попередня</span> 
                </a>
                <a href="#myCarousel" class="right carousel-control" data-slide="next">
                    <span class="glyphicon glyphicon-chevron-right"></span>
-                   <span class="sr-only">Next</span> 
+                   <span class="sr-only">Наступна</span> 
                </a>   
            </div>
        </div>
