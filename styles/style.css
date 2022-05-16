@@ -611,3 +611,9 @@ body{
 .comments-list .media:nth-child(even) {
     background-color: #f9f9f9;
 }
+.event-text h4{
+    color: #000000 !important;
+    font-weight: normal !important;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+}
