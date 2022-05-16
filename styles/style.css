@@ -626,9 +626,19 @@ body{
         text-align: center;
     }
 } 
+
 .event-text h4 {
     color: #000000 !important;
     font-weight: normal !important;
     font-family: 'Times New Roman', Times, serif;
     text-align: justify;
+}
+
+.event-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
 }

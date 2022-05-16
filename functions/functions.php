@@ -34,11 +34,13 @@ function getProduct(){
                                         </div><!-- end media -->
                                     </div><!-- end col -->
 
-                                    <div class='blog-meta big-meta col-md-8'>
+                                    <div class='blog-meta big-meta col-md-8 event-information'>
                                         <h4><a href='details.php?event_id=$event_id'>$event_title</a></h4>
-                                        <p>$event_desc</p>
-                                        <small class='firstsmall'><a class='bg-orange' href='details.php?event_id=$event_id'>$event_category</a></small>
-                                        <small><a href='details.php?event_id=$event_id'>$event_date</a></small>
+                                        <div class='event-description'>$event_desc</div>
+                                        <div class='event-characteristics'>
+                                            <small class='firstsmall'><a class='bg-orange' href='details.php?event_id=$event_id'>$event_category</a></small>
+                                            <small><a href='details.php?event_id=$event_id'>$event_date</a></small>
+                                        </div>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
 
@@ -345,12 +347,14 @@ function getProducts(){
                                         </div><!-- end media -->
                                     </div><!-- end col -->
 
-                                    <div class='blog-meta big-meta col-md-8'>
+                                    <div class='blog-meta big-meta col-md-8 event-information'>
                                         <h4><a href='details.php?event_id=$event_id'>$event_title</a></h4>
-                                        <p>$event_desc</p>
-                                        <small class='firstsmall'><a class='bg-orange' href='details.php?event_id=$event_id'>$event_category</a></small>
-                                        <small><a href='details.php?event_id=$event_id'>$event_date</a></small>
-                                    </div><!-- end meta -->
+                                        <div class='event-description'>$event_desc</div>
+                                        <div class='event-characteristics'>
+                                            <small class='firstsmall'><a class='bg-orange' href='details.php?event_id=$event_id'>$event_category</a></small>
+                                            <small><a href='details.php?event_id=$event_id'>$event_date</a></small>
+                                        </div>
+                                    </div>
                                 </div><!-- end blog-box -->
 
                                 <hr class='invis'>
