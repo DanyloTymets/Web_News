@@ -181,13 +181,7 @@ include_once("functions/functions.php");
                                     <small><a href="#" title=""><?php echo $event_date; ?></a></small>
                                 </div>
                                 </br>
-                                <div class="post-sharing">
-                                    <ul class="list-inline">
-                                        <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                        <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                        <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
+                                
                             </div>
 
                             <div class="single-post-media">
@@ -217,31 +211,6 @@ include_once("functions/functions.php");
                                     ";
                                 }
                             ?>
-                            <div class="custombox clearfix">
-                                <h3 >Можливо Вас теж зацікавить:</h3>
-                                <?php
-                                    $get_event = "select * from events order by rand() DESC LIMIT 0,3";
-                                    $run_event = mysqli_query($con,$get_event);
-                                    while($row_event=mysqli_fetch_array($run_event)){
-                                        $event_id = $row_event['event_id'];
-                                        $event_title = $row_event['event_title'];
-                                        $event_img1 = $row_event['event_img1'];
-                                        echo "
-                                            <div class='col-md-4 col-sm-4 center-responsive'>
-                                                <div class='product same-height'>
-                                                    <a href='details.php?event_id=$event_id'>
-                                                        <img class='img-responsive' src='admin_area/product_images/$event_img1'>
-                                                    </a>
-                                                    <div class='text' align='center'>
-                                                        <h4> <a href='details.php?event_id=$event_id'> $event_title </a> </h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ";
-                                    }
-                                ?>
-                            </div>
-                            </br>
                             </br>
                             <div class="custombox clearfix">
                                 <?php
@@ -286,6 +255,40 @@ include_once("functions/functions.php");
                                     </div>
                                 </div>
                             </div>
+                            <div class="post-sharing text-center">
+                                    <ul class="list-inline">
+                                        <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                        <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
+                                        <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            <div class="custombox clearfix">
+                                <h3 >Можливо Вас теж зацікавить:</h3>
+                                <?php
+                                    $get_event = "select * from events order by rand() DESC LIMIT 0,3";
+                                    $run_event = mysqli_query($con,$get_event);
+                                    while($row_event=mysqli_fetch_array($run_event)){
+                                        $event_id = $row_event['event_id'];
+                                        $event_title = $row_event['event_title'];
+                                        $event_img1 = $row_event['event_img1'];
+                                        echo "
+                                            <div class='col-md-4 col-sm-4 center-responsive'>
+                                                <div class='product same-height'>
+                                                    <a href='details.php?event_id=$event_id'>
+                                                        <img class='img-responsive' src='admin_area/product_images/$event_img1'>
+                                                    </a>
+                                                    <div class='text' align='center'>
+                                                        <h4> <a href='details.php?event_id=$event_id'> $event_title </a> </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ";
+                                    }
+                                ?>
+                            </div>
+                            </br>
+                            </br>
+                            
                             <?php
                                 if(isset($_SESSION['customer_email'])){ 
                                     $customer_email = $_SESSION['customer_email'];
