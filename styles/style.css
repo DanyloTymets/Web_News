@@ -613,6 +613,7 @@ body{
 }
 
 .blog-title-area .event-title {
+    color: #337ab7;
     text-align: justify;
 }
 
@@ -620,8 +621,14 @@ body{
     float: right;
 }
 
-@media(max-width: 768px){
+@media(max-width: 768px) {
     .blog-title-area .event-title {
         text-align: center;
     }
 } 
+.event-text h4 {
+    color: #000000 !important;
+    font-weight: normal !important;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+}

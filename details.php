@@ -179,8 +179,10 @@ include_once("functions/functions.php");
                             </br>
                             <div class="blog-content">  
                                 <div class="pp">
-                                    <!--<p><?php echo $event_desc; ?></p>-->
-                                    <h4><?php echo $event_desc; ?></h4>
+                                    <div class="event-text">
+                                        <!--<p><?php echo $event_desc; ?></p>-->
+                                        <h4><?php echo $event_desc; ?></h4>
+                                    </div>
                                 </div>
                             </div>
                             </br>
@@ -246,6 +248,7 @@ include_once("functions/functions.php");
                                     </div>
                                 </div>
                             </div>
+                            </br>
                             <div class="post-sharing text-center">
                                     <ul class="list-inline">
                                         <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
