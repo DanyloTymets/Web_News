@@ -202,12 +202,16 @@ include_once("functions/functions.php");
                             <!--<form action="details.php?add_cart=<?php echo $event_id; ?>" class="form-horizontal" method="post">
                                 <p class="text-center buttons"><button class="btn btn-primary"> Записатися</button></p>
                             </form>-->
-                            <?php 
-                                if($event_category == 'Події'){
+                            <?php
+                                if(isset($_SESSION['customer_email'])&& $event_category == 'Події'){
                                     echo "
                                         <form action='details.php?add_cart=$event_id' class='form-horizontal' method='post'>
                                             <p class='text-center buttons'><button class='btn btn-primary'> Записатися</button></p>
                                         </form>
+                                    ";
+                                }elseif(!isset($_SESSION['customer_email'])&& $event_category == 'Події'){
+                                    echo "
+                                    <p class='text-center buttons'><button class='btn btn-primary' onclick= \"location.href='checkout.php'\"> Записатися</button></p>
                                     ";
                                 }
                             ?>
