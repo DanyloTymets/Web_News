@@ -105,6 +105,9 @@
                 }   if(isset($_GET['user_profile'])){  
                         include("user_profile.php");    
                 }
+                if(isset($_GET['view_event_members'])){ 
+                        include("view_event_members.php");   
+                }
                 ?>
             </div>
         </div>

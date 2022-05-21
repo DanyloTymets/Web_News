@@ -31,6 +31,7 @@
                                 <th> Зображення: </th>
                                 <th> Категорія: </th>
                                 <th> Змінити: </th>
+                                <th> Записи: </th>
                                 <th> Видалити: </th>
                             </tr> 
                         </thead>
@@ -64,6 +65,17 @@
                                      <a href="index.php?edit_product=<?php echo $event_id; ?>">
                                         <i class="fa fa-pencil"></i> Змінити
                                      </a>
+                                </td>
+                                <td>
+                                    <?php
+                                        if($event_category == 'Події'){
+                                            echo "
+                                            <a href='index.php?view_event_members=$event_id'>
+                                                <i class='fa fa-tags'></i> Записи
+                                            </a>
+                                            ";
+                                        }
+                                    ?>
                                 </td>
                                 <td>
                                      <a href="index.php?delete_product=<?php echo $event_id; ?>">
