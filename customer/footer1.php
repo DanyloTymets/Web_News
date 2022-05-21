@@ -58,7 +58,7 @@
                 <p>
                     <a>LNU News</a>
                     <br/><a>Університетська, 1</a>
-                    <br/><a>LNU@gmail.com</a>
+                    <br/><a>webnewslnu@gmail.com</a>
                     <br/><a>+298 485 254</a>
                 </p>
                 <hr class="hidden-md hidden-lg">   
