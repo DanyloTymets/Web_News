@@ -44,7 +44,7 @@ if(isset($_POST['login'])){
     if($check_customer==1 AND $check_cart==0){ 
         $_SESSION['customer_email']=$customer_email; 
        echo "<script>alert('Ви увійшли!')</script>";
-       echo "<script>window.open('customer/account.php?orders','_self')</script>";
+       echo "<script>window.open('index.php','_self')</script>";
     }else{ 
         $_SESSION['customer_email']=$customer_email; 
        echo "<script>alert('Ви увійшли!')</script>";

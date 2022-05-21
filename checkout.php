@@ -144,9 +144,11 @@ include_once("functions/functions.php");
             <div class="col-md-8">
                 <?php  
                     if(!isset($_SESSION['customer_email'])){ 
-                        include("customer/customer_login.php"); 
-                    }else{ 
-                        include(dirname(__FILE__) .'/customer/edit_acc.php');
+                         include("customer/customer_login.php"); 
+                     }
+                     else{ 
+                         include(dirname(__FILE__) .'/customer/edit_acc.php');
+                        //echo "<script>window.open('index.php','_self')</script>";
                     }
                 ?>       
             </div>
