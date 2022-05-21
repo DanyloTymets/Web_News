@@ -124,17 +124,23 @@ include_once("functions/functions.php");
                </div>
                
                <div class="collapse clearfix" id="search">
-                   <form method="get" action="results.php" class="navbar-form">
+                   <form method="post" class="navbar-form">
                        <div class="input-group">
-                           <input type="text" class="form-control" placeholder="Search" name="user_query" required> 
-                           <span class="input-group-btn"> 
-                           <button type="submit" name="search" value="Search" class="btn btn-primary">
+                            <input type="text" class="form-control" placeholder="Search" name="user_query" required> 
+                            <span class="input-group-btn"> 
+                            <button type="submit" name="search" value="Search" class="btn btn-primary">
                                <i class="fa fa-search"></i> 
-                           </button>
+                            </button>
                            </span> 
                        </div>
                    </form>   
                </div>
+               <?php
+                    if(isset($_POST['search'])){
+                        $user_search = $_POST['user_query'];
+                        echo "<script>window.open('shop.php?search=$user_search','_self')</script>";
+                    }
+                ?>
            </div>
        </div> 
    </div>
@@ -180,13 +186,13 @@ include_once("functions/functions.php");
                            $sender_email = $_POST['email'];
                            $sender_subject = $_POST['subject'];
                            $sender_message = $_POST['message'];
-                           $receiver_email = "monopolysobaka1@gmail.com";
+                           $receiver_email = "vadimgromov5525@gmail.com";
                            mail($receiver_email,$sender_name,$sender_subject,$sender_message,$sender_email);
                            
                            $email = $_POST['email'];
                            $subject = "Thx for sending  message";
                            $msg = "We will reply u shortly.";
-                           $from = "monopolysobaka1@gmail.com";
+                           $from = "vadimgromov5525@gmail.com";
                            mail($email,$subject,$msg,$from);
                            echo "<h2 align='center'> Your message has sent sucessfully </h2>";
                        }

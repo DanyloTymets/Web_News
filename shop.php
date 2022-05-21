@@ -124,41 +124,57 @@ include_once("functions/functions.php");
                </div>
                
                <div class="collapse clearfix" id="search">
-                   <form method="get" action="results.php" class="navbar-form">
+                   <form method="post" class="navbar-form">
                        <div class="input-group">
-                           <input type="text" class="form-control" placeholder="Search" name="user_query" required> 
-                           <span class="input-group-btn"> 
-                           <button type="submit" name="search" value="Search" class="btn btn-primary">
+                            <input type="text" class="form-control" placeholder="Search" name="user_query" required> 
+                            <span class="input-group-btn"> 
+                            <button type="submit" name="search" value="Search" class="btn btn-primary">
                                <i class="fa fa-search"></i> 
-                           </button>
+                            </button>
                            </span> 
                        </div>
                    </form>   
                </div>
+               <?php
+                    if(isset($_POST['search'])){
+                        $user_search = $_POST['user_query'];
+                        echo "<script>window.open('shop.php?search=$user_search','_self')</script>";
+                    }
+                ?>
            </div>
        </div> 
    </div>
    
    <div id="content">
        <div class="container"> 
-           <div class="col-md-3">
-           <?php 
-            
-            include("sidebar.php");
-            ?>
-               
-           </div>
-           
-           <div class="col-md-9">
-               <div id="products" class="row">
-                    <?php getProducts(); ?>
-               </div>
-               <center>
-                   <ul class="pagination">
-                        <?php getPagination(); ?>
-                   </ul>
-               </center>
-           </div>
+           <?php
+                if (isset($_REQUEST['search'])) {
+                    echo "<div class='col-md-12'>";
+                    echo "<div id='products' class='row'>";
+                    getProducts();
+                    echo "</div>";
+                    echo "<center>";
+                    echo "<ul class='pagination'>";
+                    getPagination();
+                    echo "</ul>";
+                    echo "</center>";
+                    echo "</div>";
+                } else {
+                    echo "<div class='col-md-3'>";
+                    include("sidebar.php");
+                    echo "</div>";
+                    echo "<div class='col-md-9'>";
+                    echo "<div id='products' class='row'>";
+                    getProducts();
+                    echo "</div>";
+                    echo "<center>";
+                    echo "<ul class='pagination'>";
+                    getPagination();
+                    echo "</ul>";
+                    echo "</center>";
+                    echo "</div>";
+                }
+           ?>
            <div id="wait" style="position:absolute;top:40%;left:45%;padding: 200px 100px 100px 100px;"></div>
        </div>
    </div>

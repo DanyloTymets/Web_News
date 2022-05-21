@@ -270,7 +270,12 @@ function getPagination(){
     }
 
     $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ',$aWhere):'');
-    $query = "select * from events".$sWhere;
+    if (isset($_REQUEST['search'])) {
+        $search_input = $_REQUEST['search']; 
+        $query = "select * from events WHERE LOCATE('$search_input', event_title) > 0 OR LOCATE('$search_input', event_desc)".$sWhere;
+    } else {
+        $query = "select * from events ".$sWhere;
+    }
     $result = mysqli_query($db,$query);
     $total_records = mysqli_num_rows($result);
     $total_pages = ceil($total_records / $per_page);
@@ -314,9 +319,16 @@ function getProducts(){
     }
     $start_from = ($page-1) * $per_page;
     $sLimit = " order by 1 DESC LIMIT $start_from,$per_page";
-    $sWhere = (count($aWhere)>0?' WHERE '.implode(' or ',$aWhere):'').$sLimit;
-    $get_events = "select * from events ".$sWhere;
-    $run_events = mysqli_query($db,$get_events);
+    $sWhere = (count($aWhere) > 0 ? ' WHERE '.implode(' or ',$aWhere) : '').$sLimit;
+    if (isset($_REQUEST['search'])) {
+        $size = 12;
+        $search_input = $_REQUEST['search']; 
+        $get_events = "select * from events WHERE LOCATE('$search_input', event_title) > 0 OR LOCATE('$search_input', event_desc)".$sWhere;
+    } else {
+        $size = 9;
+        $get_events = "select * from events ".$sWhere;
+    }
+    $run_events = mysqli_query($db, $get_events);
     while($row_events=mysqli_fetch_array($run_events)){
         $event_id = $row_events['event_id']; 
         $event_title = $row_events['event_title']; 
@@ -334,7 +346,7 @@ function getProducts(){
         <section class='section'>
             <div class='container'>
                 <div class='row'>
-                    <div class='col-lg-9 col-md-12 col-sm-12 col-xs-12'>
+                    <div class='col-lg-$size col-md-12 col-sm-12 col-xs-12'>
                         <div class='page-wrapper'>
                             <div class='blog-list clearfix'>
                                 <div class='blog-box row'>

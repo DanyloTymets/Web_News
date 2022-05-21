@@ -124,17 +124,23 @@ include("functions/functions.php");
                </div>
                
                <div class="collapse clearfix" id="search">
-                   <form method="get" action="results.php" class="navbar-form">
+                   <form method="post" class="navbar-form">
                        <div class="input-group">
-                           <input type="text" class="form-control" placeholder="Search" name="user_query" required> 
-                           <span class="input-group-btn"> 
-                           <button type="submit" name="search" value="Search" class="btn btn-primary">
+                            <input type="text" class="form-control" placeholder="Search" name="user_query" required> 
+                            <span class="input-group-btn"> 
+                            <button type="submit" name="search" value="Search" class="btn btn-primary">
                                <i class="fa fa-search"></i> 
-                           </button>
+                            </button>
                            </span> 
                        </div>
                    </form>   
                </div>
+               <?php
+                    if(isset($_POST['search'])){
+                        $user_search = $_POST['user_query'];
+                        echo "<script>window.open('shop.php?search=$user_search','_self')</script>";
+                    }
+                ?>
            </div>
        </div> 
    </div>
